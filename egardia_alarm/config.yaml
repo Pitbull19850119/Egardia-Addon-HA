@@ -1,0 +1,34 @@
+name: "Egardia Alarm Control"
+description: "Smart control for Egardia/GATE alarm systems via cloud web interface"
+version: "1.0.5"
+slug: "egardia_alarm"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+startup: application
+boot: auto
+ports:
+  8765/tcp: 8765
+ports_description:
+  8765/tcp: "Egardia Web UI & REST API"
+options:
+  username: ""
+  password: ""
+  poll_interval: 30
+  log_level: "info"
+schema:
+  username: str
+  password: str
+  poll_interval: int(10,300)
+  log_level: list(debug|info|warning|error)
+panel_icon: mdi:shield-home
+panel_title: Egardia
+homeassistant_api: true
+hassio_api: true
+ingress: true
+ingress_port: 8765
+map:
+  - data:rw
